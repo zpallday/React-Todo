@@ -33,9 +33,9 @@ addItem = item => {
 
 clearCompleted = () => {
   this.setState({
- item: this.state.item.filter(item => !item.completed)
-  })
-}
+    todoData: this.state.todoData.filter(task => !task.completed)
+  });
+};
 
 
 
@@ -44,8 +44,8 @@ clearCompleted = () => {
       <div>
         <h2>Welcome to your Todo App!</h2>
         
-        <TodoList todoData={this.state.todoData} />
-        <TodoForm addItem={this.addItem} />
+        <TodoList todoData={this.state.todoData} toggleTask={this.toggleTask} clearCompleted={this.clearCompleted} />
+        <TodoForm addItem={this.addItem} toggleTask={this.toggleTask}/>
       </div>
     );
   }
