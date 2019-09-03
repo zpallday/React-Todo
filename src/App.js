@@ -7,6 +7,21 @@ import TodoForm from "./components/TodoComponents/TodoForm";
   // this component is going to take care of state, and any change handlers you need to work with your state
 
 
+  const todoData = [
+    {
+      task: 'Get a haircut',
+      id: 1528817077286,
+      completed: false
+    },
+    {
+      task: 'Make pesto out of all that basil',
+      id: 1528817084358,
+      completed: false
+    },
+    ]
+
+
+
 
   class App extends React.Component {
 
@@ -38,14 +53,26 @@ clearCompleted = () => {
 };
 
 
+deletePersonHandler = (todoData) => {
+  // const persons = this.state.persons.slice();
+  const persons = [...this.state.persons];
+  persons.splice(todoData, 1);
+  this.setState({person: todoData})
+  }
+
 
   render() {
+    
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
         
-        <TodoList todoData={this.state.todoData} toggleTask={this.toggleTask} clearCompleted={this.clearCompleted} />
-        <TodoForm addItem={this.addItem} toggleTask={this.toggleTask}/>
+        <TodoList 
+        onClick={() => this.clearCompleted()}
+        todoData={this.state.todoData} toggleTask={this.toggleTask} clearCompleted={this.clearCompleted} />
+        <TodoForm 
+        addItem={this.addItem} 
+        toggleTask={this.toggleTask}/>
       </div>
     );
   }
